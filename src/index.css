@@ -132,3 +132,36 @@
     @apply font-sans;
     }
 }
+
+/* Custom Leaflet Styles for Dark Mode Adaptability */
+.leaflet-container {
+  font-family: var(--font-sans) !important;
+}
+
+.leaflet-popup-content-wrapper {
+  background: var(--card) !important;
+  color: var(--card-foreground) !important;
+  border: 1px solid oklch(from var(--border) l c h / 60%) !important;
+  border-radius: var(--radius-xl) !important;
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05) !important;
+}
+
+.leaflet-popup-tip {
+  background: var(--card) !important;
+  border: 1px solid oklch(from var(--border) l c h / 60%) !important;
+}
+
+.leaflet-popup-content {
+  margin: 10px 12px !important;
+}
+
+.leaflet-popup-close-button {
+  color: var(--muted-foreground) !important;
+  font-size: 14px !important;
+  padding: 8px !important;
+}
+
+.leaflet-popup-close-button:hover {
+  color: var(--foreground) !important;
+  background: transparent !important;
+}
