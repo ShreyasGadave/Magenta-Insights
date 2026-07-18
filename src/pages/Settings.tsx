@@ -2,19 +2,13 @@ import React, { useState } from "react";
 import { useOutlets } from "@/context/OutletContext";
 import { useTheme } from "@/components/theme-provider";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
-import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import { Badge } from "@/components/ui/badge";
 import { toast } from "sonner";
 import {
   Sun,
   Moon,
   Monitor,
-  Database,
   User,
-  Shield,
-  RefreshCw,
-  Save,
 } from "lucide-react";
 
 const Settings: React.FC = () => {
