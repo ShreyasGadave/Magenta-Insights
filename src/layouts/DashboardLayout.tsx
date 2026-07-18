@@ -11,7 +11,7 @@ export default function DashboardLayout() {
   return (
     <SidebarProvider>
       <AppSidebar />
-        <SidebarInset className="bg-accent/20">
+        <SidebarInset className="bg-background">
           <AppHeader />
           <main className="flex flex-col flex-1 overflow-auto"><Outlet /></main>
         </SidebarInset>

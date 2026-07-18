@@ -17,6 +17,7 @@ import {
 import { Input } from "@/components/ui/input";
 import { Link, useNavigate } from "react-router-dom";
 import { useOutlets } from "@/context/OutletContext";
+import { toast } from "sonner";
 
 export default function Signin() {
   const navigate = useNavigate();
@@ -31,6 +32,7 @@ export default function Signin() {
       const name = email.split("@")[0];
       const formattedName = name.charAt(0).toUpperCase() + name.slice(1);
       login(email, formattedName || "Shreyas Gadave");
+      toast.success(`Welcome, ${formattedName || "Shreyas Gadave"}! Signed in successfully.`);
       navigate("/dashboard");
     }
   };
@@ -84,6 +86,7 @@ export default function Signin() {
                     </Button>
                     <Button variant="outline" type="button" className="w-full" onClick={() => {
                       login("demo@magenta.com", "Demo User");
+                      toast.success("Signed in successfully with Demo Account!");
                       navigate("/dashboard");
                     }}>
                       Sign in with Demo Account

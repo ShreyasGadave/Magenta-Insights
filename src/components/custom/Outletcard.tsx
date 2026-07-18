@@ -43,7 +43,7 @@ const OutletCard: React.FC<OutletCardProps> = ({
   const staleVisit = daysSince(outlet.lastVisit) > 21;
 
   return (
-    <div className="flex bg-card border border-border/60 hover:border-border/100 rounded-2xl overflow-hidden shadow-sm hover:shadow-md transition-all duration-300 w-full max-w-[380px] font-sans">
+    <div className="flex bg-card border border-border/60 hover:border-border/100  overflow-hidden shadow-sm hover:shadow-md transition-all duration-300 w-full max-w-[380px] font-sans">
       {/* Status Stripe */}
       <div className={`w-1.5 flex-shrink-0 ${style.stripe}`} />
 

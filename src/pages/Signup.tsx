@@ -17,6 +17,7 @@ import {
 import { Input } from "@/components/ui/input";
 import { Link, useNavigate } from "react-router-dom";
 import { useOutlets } from "@/context/OutletContext";
+import { toast } from "sonner";
 
 export default function Signup() {
   const navigate = useNavigate();
@@ -30,6 +31,7 @@ export default function Signup() {
     if (name && email && password) {
       // Mock signup: directly log the user in
       login(email, name);
+      toast.success(`Account created successfully! Welcome, ${name}.`);
       navigate("/dashboard");
     }
   };
@@ -86,6 +88,7 @@ export default function Signup() {
                     <Button type="submit" className="w-full font-semibold">Sign up</Button>
                     <Button variant="outline" type="button" className="w-full" onClick={() => {
                       login("demo@magenta.com", "Demo User");
+                      toast.success("Signed in successfully with Demo Account!");
                       navigate("/dashboard");
                     }}>
                       Sign up with Demo Account

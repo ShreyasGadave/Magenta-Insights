@@ -30,15 +30,31 @@ const Toaster = ({ ...props }: ToasterProps) => {
       }}
       style={
         {
-          "--normal-bg": "var(--popover)",
-          "--normal-text": "var(--popover-foreground)",
+          "--normal-bg": "var(--card)",
+          "--normal-text": "var(--card-foreground)",
           "--normal-border": "var(--border)",
           "--border-radius": "var(--radius)",
+
+          "--success-bg": "var(--toast-success-bg)",
+          "--success-text": "var(--toast-success-text)",
+          "--success-border": "var(--toast-success-border)",
+
+          "--error-bg": "var(--toast-error-bg)",
+          "--error-text": "var(--toast-error-text)",
+          "--error-border": "var(--toast-error-border)",
+
+          "--warning-bg": "var(--toast-warning-bg)",
+          "--warning-text": "var(--toast-warning-text)",
+          "--warning-border": "var(--toast-warning-border)",
+
+          "--info-bg": "var(--toast-info-bg)",
+          "--info-text": "var(--toast-info-text)",
+          "--info-border": "var(--toast-info-border)",
         } as React.CSSProperties
       }
       toastOptions={{
         classNames: {
-          toast: "cn-toast",
+          toast: "cn-toast flex items-center gap-3 w-full p-4 rounded-xl shadow-lg border border-border/10 text-xs font-semibold font-[Outfit] border-solid",
         },
       }}
       {...props}

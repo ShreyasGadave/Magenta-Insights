@@ -150,7 +150,7 @@ const MapPage: React.FC = () => {
       <div className="w-full md:w-80 lg:w-96 border-b md:border-b-0 md:border-r border-border/40 bg-card flex flex-col h-[40%] md:h-full shrink-0 shadow-sm z-10">
         <div className="p-4 border-b border-border/30 flex flex-col gap-3">
           <div>
-            <h1 className="text-xl font-bold font-[Outfit] text-foreground">Outlet Map</h1>
+            <h1 className="text-xl font-medium">Outlet Map</h1>
             <p className="text-[11px] text-muted-foreground mt-0.5">
               Geographic lookup and tracking of field coverage.
             </p>
@@ -168,20 +168,18 @@ const MapPage: React.FC = () => {
           </div>
 
           {/* Status selector */}
-          <div className="flex items-center gap-1">
-            <Filter className="h-3 w-3 text-muted-foreground mr-1" />
+          <div className="flex items-center gap-1.5 overflow-x-auto pb-1">
+            <Filter className="h-3 w-3 text-muted-foreground mr-1 shrink-0" />
             {["All", "Active", "Inactive", "Prospect"].map((status) => (
-              <button
+              <Button
                 key={status}
                 onClick={() => setStatusFilter(status)}
-                className={`text-[10px] px-2.5 py-1 rounded-lg font-bold border transition-colors ${
-                  statusFilter === status
-                    ? "bg-primary border-primary text-primary-foreground"
-                    : "bg-background border-border/60 text-muted-foreground hover:text-foreground"
-                }`}
+                variant={statusFilter === status ? "default" : "outline"}
+                size="sm"
+                className="text-[10px] h-7 px-2.5 rounded-lg font-bold shadow-none shrink-0"
               >
                 {status}
-              </button>
+              </Button>
             ))}
           </div>
         </div>

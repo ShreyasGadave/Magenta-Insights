@@ -1,5 +1,13 @@
 import { useLocation, useNavigate } from "react-router-dom";
 import { useOutlets } from "@/context/OutletContext";
+import { toast } from "sonner";
+import {
+  DropdownMenu,
+  DropdownMenuTrigger,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuSeparator,
+} from "@/components/ui/dropdown-menu";
 
 import {
   Sidebar,
@@ -55,18 +63,16 @@ export const AppSidebar = () => {
   const navigate = useNavigate();
   const { currentUser, logout } = useOutlets();
 
-  const displayName = currentUser?.name || "Shreyas Gadave";
-
   return (
     <Sidebar collapsible="icon">
       <SidebarHeader>
         <SidebarMenuItem>
           <SidebarMenuButton className="gap-x-4 h-12 px-4 border-b border-border/50">
             <span className="flex items-center gap-3 font-semibold text-primary">
-              <div className="flex items-center justify-center size-7 rounded-lg bg-primary text-primary-foreground font-extrabold text-sm shadow-md shadow-primary/20">
-                M
-              </div>
-              <span className="text-sm font-[Outfit] tracking-wide text-foreground">Magenta Insights</span>
+              <img src="/logo.svg" className="h-5 w-5" />
+              <span className="text-sm font-medium tracking-wide text-foreground">
+                Magenta Insights
+              </span>
             </span>
           </SidebarMenuButton>
         </SidebarMenuItem>
@@ -74,7 +80,9 @@ export const AppSidebar = () => {
       <SidebarContent>
         {menuItems.map((group) => (
           <SidebarGroup key={group.title}>
-            <SidebarGroupLabel className="px-4 text-xs font-semibold text-muted-foreground/70 tracking-wider">{group.title}</SidebarGroupLabel>
+            <SidebarGroupLabel className="px-4 text-xs font-semibold text-muted-foreground/70 tracking-wider">
+              {group.title}
+            </SidebarGroupLabel>
             <SidebarGroupContent>
               <SidebarMenu>
                 {group.items.map((item) => (
@@ -86,13 +94,12 @@ export const AppSidebar = () => {
                           ? pathname === "/"
                           : pathname.startsWith(item.url)
                       }
-                      className="gap-x-4 h-10 px-4 rounded-xl transition-all duration-200"
                       onClick={() => {
                         navigate(item.url);
                       }}
                     >
-                      <item.icon className="size-4 shrink-0" />
-                      <span className="font-medium text-sm">{item.title}</span>
+                      <item.icon strokeWidth={1.7} className="size-4 shrink-0" />
+                      <span className="">{item.title}</span>
                     </SidebarMenuButton>
                   </SidebarMenuItem>
                 ))}
@@ -104,25 +111,40 @@ export const AppSidebar = () => {
       <SidebarFooter className="p-3 border-t border-border/50">
         <SidebarMenu>
           <SidebarMenuItem>
-            <div className="flex flex-col gap-2">
-              <div className="flex items-center gap-x-3 px-3 py-2 rounded-xl bg-accent/30 border border-border/10">
-                <CircleUserRound className="h-5 w-5 text-muted-foreground shrink-0" />
-                <div className="flex flex-col min-w-0">
-                  <span className="truncate text-xs font-semibold text-foreground leading-none">{displayName}</span>
-                  <span className="truncate text-[10px] text-muted-foreground mt-0.5">{currentUser?.email || "admin@magenta.com"}</span>
-                </div>
-              </div>
-              <button
-                onClick={() => {
-                  logout();
-                  navigate("/signin");
-                }}
-                className="flex w-full items-center gap-x-3 h-9 px-3 text-xs font-semibold text-destructive hover:bg-destructive/10 rounded-xl transition-all duration-200"
+            <DropdownMenu>
+              <DropdownMenuTrigger className="w-full">
+                <SidebarMenuButton
+                  tooltip={currentUser?.name || "Shreyas Gadave"}
+                  className="gap-x-4 h-10 px-4 w-full"
+                >
+                  <CircleUserRound strokeWidth={1.7} className="h-4 w-4 shrink-0" />
+                  <span className="truncate text-left">{currentUser?.name || "Shreyas Gadave"}</span>
+                </SidebarMenuButton>
+              </DropdownMenuTrigger>
+              <DropdownMenuContent
+                align="end"
+                side="right"
+                className="w-56 font-[Outfit] border border-border/40 ml-2"
               >
-                <LogOut className="h-4 w-4 shrink-0" />
-                <span>Logout</span>
-              </button>
-            </div>
+                <div className="flex flex-col p-2 text-xs">
+                  <span className="font-semibold text-foreground">{currentUser?.name || "Shreyas Gadave"}</span>
+                  <span className="text-[10px] text-muted-foreground truncate">{currentUser?.email || "shreyasgadave777@gmail.com"}</span>
+                </div>
+                <DropdownMenuSeparator className="bg-border/40" />
+                <DropdownMenuItem
+                  onClick={() => {
+                    logout();
+                    toast.success("Logged out successfully!");
+                    navigate("/signin");
+                  }}
+                  variant="destructive"
+                  className="cursor-pointer gap-2 text-destructive focus:bg-destructive/10"
+                >
+                  <LogOut className="h-3.5 w-3.5 text-destructive" />
+                  <span>Log Out</span>
+                </DropdownMenuItem>
+              </DropdownMenuContent>
+            </DropdownMenu>
           </SidebarMenuItem>
         </SidebarMenu>
       </SidebarFooter>
