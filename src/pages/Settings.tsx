@@ -12,7 +12,7 @@ import {
 } from "lucide-react";
 
 const Settings: React.FC = () => {
-  const { currentUser, resetData, outlets } = useOutlets();
+  const { currentUser} = useOutlets();
   const { theme, setTheme } = useTheme();
 
   // Mock form state for profile info
@@ -22,13 +22,6 @@ const Settings: React.FC = () => {
   const handleSaveProfile = (e: React.FormEvent) => {
     e.preventDefault();
     toast.success("Profile mock settings saved successfully!");
-  };
-
-  const handleResetDatabase = () => {
-    if (window.confirm("Are you sure you want to reset all outlet changes back to initial mock data? This will clear any additions, modifications, or deletions.")) {
-      resetData();
-      toast.success("Outlets database re-seeded successfully!");
-    }
   };
 
   return (
