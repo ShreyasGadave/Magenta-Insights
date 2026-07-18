@@ -10,6 +10,7 @@ import DashboardLayout from "./layouts/DashboardLayout";
 import ProtectedRoute from "./components/ProtectedRoute";
 import { OutletProvider } from "./context/OutletContext";
 import { Toaster } from "@/components/ui/sonner";
+import NotFound from "./pages/NotFound";
 
 function App() {
   return (
@@ -18,6 +19,7 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/signin" element={<Signin />} />
         <Route path="/signup" element={<Signup />} />
+        <Route path="*" element={<NotFound />} />
 
         <Route element={<ProtectedRoute />}>
           <Route element={<DashboardLayout />}>

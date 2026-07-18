@@ -18,7 +18,7 @@ const Data = [
     address: "Kothrud, Pune",
     latitude: 18.5074,
     longitude: 73.8077,
-    status: "Active",
+    status: "Prospect",
     lastVisit: "2026-07-14",
   },
   {
@@ -106,7 +106,7 @@ const Data = [
     address: "Kharadi, Pune",
     latitude: 18.5515,
     longitude: 73.943,
-    status: "Active",
+    status: "Prospect",
     lastVisit: "2026-07-16",
   },
   {
@@ -194,7 +194,7 @@ const Data = [
     address: "Yerawada, Pune",
     latitude: 18.5595,
     longitude: 73.8791,
-    status: "Active",
+    status: "Prospect",
     lastVisit: "2026-07-12",
   },
   {
@@ -205,7 +205,7 @@ const Data = [
     address: "Sinhagad Road, Pune",
     latitude: 18.4658,
     longitude: 73.8145,
-    status: "Inactive",
+    status: "Prospect",
     lastVisit: "2026-06-10",
   },
   {
